@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour {
 
     private Vector3 movement;
 
+    public GameObject Camera;
+
+    private float rotation;
+
     public float speed;
 
     public Text winText;
@@ -21,11 +25,26 @@ public class PlayerController : MonoBehaviour {
 	
 	void FixedUpdate ()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        rotation = Camera.transform.eulerAngles.y;
 
-        movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        float move = Input.GetAxis("Vertical");
 
+        if (rotation > 45 && rotation < 125)
+        {
+            movement = new Vector3(move, 0.0f, 0.0f);
+        }
+        else if (rotation > 125 && rotation < 225)
+        {
+            movement = new Vector3(0.0f, 0.0f, -move);
+        }
+        else if (rotation > 225 && rotation < 315)
+        {
+            movement = new Vector3(-move, 0.0f, 0.0f);
+        }
+        else
+        {
+            movement = new Vector3(0.0f, 0.0f, move);
+        }
         rb.AddForce(movement * speed);
 	}
 
