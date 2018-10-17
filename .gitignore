@@ -440,3 +440,8 @@ ASALocalRun/
 
 
 # End of https://www.gitignore.io/api/macos,linux,unity,windows,visualstudio,visualstudiocode
+
+
+# TextMesh Pro
+
+TextMesh*Pro/
