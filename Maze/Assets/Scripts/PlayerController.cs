@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -11,16 +12,15 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject Camera;
 
+    public GameObject EndMenu;
+
     private float rotation;
 
     public float speed;
 
-    public Text winText;
-
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
-        winText.text = "";
 	}
 	
 	void FixedUpdate ()
@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("WinTrigger"))
         {
-            winText.text = "You Win!";
+            EndMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
