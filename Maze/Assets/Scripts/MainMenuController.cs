@@ -7,7 +7,16 @@ public class MainMenuController : MonoBehaviour {
 
     public void PlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int scene = Random.Range(0, 10);
+        if (scene < 5)
+        {
+            scene = 1;
+        }
+        else
+        {
+            scene = 2;
+        }
+        SceneManager.LoadScene(scene);
     }
 
     public void QuitGame ()

@@ -50,6 +50,13 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter (Collider other)
     {
+        if (other.gameObject.CompareTag("Teleporter1"))
+        {
+            float x = Random.Range(-30, 30);
+            float z = Random.Range(-30, 30);
+            transform.position = new Vector3(x, 0.5f, z);
+        }
+
         if (other.gameObject.CompareTag("WinTrigger"))
         {
             EndMenu.SetActive(true);
